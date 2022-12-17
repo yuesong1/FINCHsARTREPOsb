@@ -1,0 +1,7 @@
+server:
+    port: 500
+spring:
+    data:
+    mongodb:
+        uri: mongodb+srv://ethfinch:Songyue123@cluster0.9tgnhsl.mongodb.net/ArtDatabase
+        auto-index-creation: true
