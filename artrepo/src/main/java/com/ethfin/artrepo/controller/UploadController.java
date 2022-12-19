@@ -31,34 +31,7 @@ public class UploadController {
     }
     @RequestMapping(value = "/upload",
             method = RequestMethod.POST)
-    public int upload(@RequestParam("file") MultipartFile[] uploadFiles){
-            String currentFile=null;
-            try{
-                for (MultipartFile uploadFile: uploadFiles
-            ) {
-                    currentFile=uploadFile.getOriginalFilename();
-                String path=fileUploadPath;
-                System.out.println("upload to: "+path);
-                File file=new File(path);
-                if(!file.exists()){
-                    file.mkdirs();
-                }
-                SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd_HH_mm_ss_SS");
-                String filename=df.format(new Date().getTime());
-                //String filename=new Timestamp(System.currentTimeMillis()).toString();
-                String newName=filename+'.'+FilenameUtils.getExtension(uploadFile.
-                        getOriginalFilename());
-                uploadFile.transferTo(new File(file,newName));
-                System.out.println(newName);
-
-        }
-
-                return 200;
-    }catch(
-    IOException e){
-           System.out.println(e);
-           System.out.println("upload failed: "+ currentFile);
-            return 500;
-    }
+    public void upload(@RequestParam("file") MultipartFile[] uploadFiles){
+        uploadService.UploadFiles(uploadFiles);
 }
 }

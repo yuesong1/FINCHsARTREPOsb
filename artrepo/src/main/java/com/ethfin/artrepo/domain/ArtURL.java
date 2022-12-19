@@ -14,7 +14,12 @@ public class ArtURL {
     private String name;
     private String md5;
 
+    public ArtURL() {
+        this.id = new ObjectId();
+    }
+
     public ArtURL(String url, String name, String md5) {
+        this.id = new ObjectId();
         this.url = url;
         this.name = name;
         this.md5 = md5;
